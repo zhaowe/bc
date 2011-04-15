@@ -1,0 +1,14 @@
+vti_encoding:SR|utf8-nl
+vti_timelastmodified:TR|25 Jun 2007 08:56:34 -0000
+vti_extenderversion:SR|4.0.2.7802
+vti_cacheddtm:TX|25 Jun 2007 08:56:34 -0000
+vti_filesize:IR|12790
+vti_cachedlinkinfo:VX|Q|style.css S|images/right.jpg A|infoin.asp S|infoin1.asp S|images/bg042.gif S|images/px1.gif S|images/right.jpg S|images/e06.gif A|infoin.asp S|images/bg042.gif S|images/px1.gif S|images/tuandui.jpg S|images/right.jpg H|index.asp S|images/but01.gif H|search.asp S|images/but02.gif H|tuandui_manage.asp S|images/but03.gif H|shouyichu_history.asp S|images/but04.gif S|images/e06.gif A|infoin.asp S|images/bg042.gif S|images/px1.gif S|images/tuandui.jpg S|images/right.jpg H|index.asp S|images/but01.gif H|search.asp S|images/but02.gif H|tuandui_manage.asp S|images/but03.gif H|shouyichu_history.asp S|images/but04.gif S|images/e06.gif A|infoin.asp S|images/px1.gif S|images/bg042.gif S|images/px1.gif
+vti_cachedsvcrellinks:VX|FQUS|usermanage/department/style.css FSUS|Usermanage/department/images/right.jpg FAUS|Usermanage/department/infoin.asp FSUS|usermanage/department/infoin1.asp FSUS|Usermanage/department/images/bg042.gif FSUS|Usermanage/department/images/px1.gif FSUS|Usermanage/department/images/right.jpg FSUS|Usermanage/department/images/e06.gif FAUS|Usermanage/department/infoin.asp FSUS|Usermanage/department/images/bg042.gif FSUS|Usermanage/department/images/px1.gif FSUS|Usermanage/department/images/tuandui.jpg FSUS|Usermanage/department/images/right.jpg FHUS|Usermanage/department/index.asp FSUS|Usermanage/department/images/but01.gif NHUS|Usermanage/department/search.asp FSUS|Usermanage/department/images/but02.gif NHUS|Usermanage/department/tuandui_manage.asp FSUS|Usermanage/department/images/but03.gif NHUS|Usermanage/department/shouyichu_history.asp FSUS|Usermanage/department/images/but04.gif FSUS|Usermanage/department/images/e06.gif FAUS|Usermanage/department/infoin.asp FSUS|Usermanage/department/images/bg042.gif FSUS|Usermanage/department/images/px1.gif FSUS|Usermanage/department/images/tuandui.jpg FSUS|Usermanage/department/images/right.jpg FHUS|Usermanage/department/index.asp FSUS|Usermanage/department/images/but01.gif NHUS|Usermanage/department/search.asp FSUS|Usermanage/department/images/but02.gif NHUS|Usermanage/department/tuandui_manage.asp FSUS|Usermanage/department/images/but03.gif NHUS|Usermanage/department/shouyichu_history.asp FSUS|Usermanage/department/images/but04.gif FSUS|Usermanage/department/images/e06.gif FAUS|Usermanage/department/infoin.asp FSUS|Usermanage/department/images/px1.gif FSUS|Usermanage/department/images/bg042.gif FSUS|Usermanage/department/images/px1.gif
+vti_cachedtitle:SR|部门管理
+vti_title:SR|部门管理
+vti_cachedbodystyle:SR|<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#cccccc">
+vti_cachedhasbots:BR|false
+vti_cachedhastheme:BR|false
+vti_cachedhasborder:BR|false
+vti_backlinkinfo:VX|usermanage/logininfo.asp usermanage/department/infoin.asp usermanage/department/index.asp

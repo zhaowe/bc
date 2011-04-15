@@ -1,0 +1,222 @@
+<SCRIPT LANGUAGE=VBScript RUNAT=Server>
+
+'You can add special event handlers in this file that will get run automatically when
+'special Active Server Pages events occur. To create these handlers, just create a
+'subroutine with a name from the list below that corresponds to the event you want to
+'use. For example, to create an event handler for Session_OnStart, you would put the
+'following code into this file (without the comments):
+
+'Sub Session_OnStart
+	FrontPage_StartSession '==FrontPage Generated==
+'**Put your code here **
+'End Sub
+Sub FrontPage_StartSession
+	On Error Resume Next
+	if Len(Application("FrontPage_VRoot")) > 0 then Exit Sub
+	' discover the VRoot for the current page;
+	' walk back up VPath until we find global.asa
+	Vroot = Request.ServerVariables("PATH_INFO")
+	strG1 = "global.asa"
+	strG2 = "Global.asa"
+	iCount = 0
+	do while Len(Vroot) > 1
+		idx = InStrRev(Vroot, "/")
+		if idx > 0 then
+			Vroot = Left(Vroot,idx)
+		else
+			' error; assume root web
+			Vroot = "/"
+		end if
+		if FrontPage_FileExists(Server.MapPath(Vroot & strG1)) then exit do
+		if FrontPage_FileExists(Server.MapPath(Vroot & strG2)) then exit do
+		if Right(Vroot,1) = "/" then Vroot = Left(Vroot,Len(Vroot)-1)
+		iCount = iCount + 1
+		if iCount > 100 then
+			' error; assume root web
+			Vroot = "/"
+			exit do
+		end if
+	loop
+	' map all URL= attributes in _ConnectionString variables
+	Application.Lock
+	if Len(Application("FrontPage_VRoot")) = 0 then
+		Application("FrontPage_VRoot") = Vroot
+		UrlVarArray = Application("FrontPage_UrlVars")
+		for i = 0 to UBound(UrlVarArray)
+			if Len(UrlVarArray(i)) > 0 then FrontPage_MapUrl(UrlVarArray(i))
+		next
+	end if
+	Application.Unlock
+End Sub
+Function FrontPage_FileExists(fspath)
+	On Error Resume Next
+	FrontPage_FileExists = False
+	set fs = CreateObject("Scripting.FileSystemObject")
+	Err.Clear
+	set istream = fs.OpenTextFile(fspath)
+	if Err.Number = 0 then
+		FrontPage_FileExists = True
+		istream.Close
+	end if
+	set istream = Nothing
+	set fs = Nothing
+End Function
+Sub FrontPage_MapUrl(AppVarName)
+	' convert URL attribute in conn string to absolute file location
+	strVal = Application(AppVarName)
+	strKey = "URL="
+	idxStart = InStr(strVal, strKey)
+	If idxStart = 0 Then Exit Sub
+	strBefore = Left(strVal, idxStart - 1)
+	idxStart = idxStart + Len(strKey)
+	idxEnd = InStr(idxStart, strVal, ";")
+	If idxEnd = 0 Then
+		strAfter = ""
+		strURL = Mid(strVal, idxStart)
+	Else
+		strAfter = ";" & Mid(strVal, idxEnd + 1)
+		strURL = Mid(strVal, idxStart, idxEnd - idxStart)
+	End If
+	strOut = strBefore & Server.MapPath(Application("FrontPage_VRoot") & strURL) & strAfter
+	Application(AppVarName) = strOut
+End Sub
+
+'EventName              Description
+'Session_OnStart        Runs the first time a user runs any page in your application
+'Session_OnEnd          Runs when a user's session times out or quits your application
+'Application_OnStart    Runs once when the first page of your application is run for the first time by any user
+'Application_OnEnd      Runs once when the web server shuts down
+
+</SCRIPT>
+
+<SCRIPT LANGUAGE=VBScript RUNAT=Server>
+
+Server.ScriptTimeOut=900
+
+Sub Application_OnStart
+	'==Visual InterDev Generated - startspan==
+	'--Project Data Connection
+		Application("Connection1_ConnectionString") = "DSN=remote;SERVER=10.254.0.48;UID=sa;WSID=CHENFENG;DATABASE=mastersystem"
+		Application("Connection1_ConnectionTimeout") = 15
+		Application("Connection1_CommandTimeout") = 30
+		Application("Connection1_CursorLocation") = 3
+		Application("Connection1_RuntimeUserName") = "sa"
+		Application("Connection1_RuntimePassword") = ""
+	'-- Project Data Environment
+		'Set DE = Server.CreateObject("DERuntime.DERuntime")
+		'Application("DE") = DE.Load(Server.MapPath("Global.ASA"), "_private/DataEnvironment/DataEnvironment.asa")
+	'==Visual InterDev Generated - endspan==
+	'==FrontPage Generated - startspan==
+	Dim FrontPage_UrlVars(2)
+	'--Project Data Connection
+		Application("数据库 1_ConnectionString") = "DRIVER={SQL Server};SERVER=10.254.0.43;DATABASE=xxgcb;UID=sa;PWD=szx6275"
+		Application("数据库 1_ConnectionTimeout") = 15
+		Application("数据库 1_CommandTimeout") = 30
+		Application("数据库 1_CursorLocation") = 3
+		Application("数据库 1_RuntimeUserName") = "sa"
+		Application("数据库 1_RuntimePassword") = "szx6275"
+	'--
+	Application("FrontPage_UrlVars") = FrontPage_UrlVars
+	'==FrontPage Generated - endspan==
+   application("locale")="zh"
+   application("Protocol")="http"
+   Application("UseObject")="AMS"   '"et"
+   application("B2BCompanyID")="AMS"
+   Application("htmurl") ="/ManageSystem"	
+   
+   'application("SQL_Num")表示设备维修服务器地址。
+   application("SQL_Num")=41
+  
+    'application("OledbStr")表示各ASP共用的数据库连接。
+   Application("OledbStr") = "provider=sqloledb;server=10.101.80.6;database=mastersystem;uid=ccs;pwd=ccs123456;"
+   Application("OledbStr1") = "provider=sqloledb;server=10.254.0.41;database=eem;uid=sa;pwd=szx6275;"
+   Application("OledbStr_FSTM") = "provider=sqloledb;server=10.254.0.33;database=FSTM1;uid=fstm;pwd=tmd;"
+
+   
+	'intra manage database dsn
+'	Application("DSN_IntraDSNName")="netbooking"
+'	Application("RunTime_IntraUserLoginID")="sa"
+'	Application("RunTime_IntraUserPSW")="3434"
+
+	'Charge Fee required from ticket return
+	Application("CancelFare24A")=0.05
+	Application("CancelFare2A24B")=0.1
+	Application("CancelFare2B")=0.2
+	Application("CancelFareNoShow")=0.5
+	Application("BankRate")=0
+
+	Application("EtUrl")="/ManageSystem"
+
+	application("AvTimeOut")=80		'terminal command timeout
+	
+	 'judge the year of dropdown list
+	if month(date()) >=10 then
+		Application("listyear")=2	'list list this year and next year
+	else
+		Application("listyear")=1	'only list this yasr
+	end if
+	
+	Application("OutSideInSide")=0  '0 means outside, 1 means inside
+	
+	Application("MaxPayTimes")=5    '最大支付次数
+
+    Server.ScriptTimeout=36000 	
+    
+    Application("ActiveUsers")=0
+    
+End Sub
+
+</SCRIPT>
+
+<SCRIPT LANGUAGE=VBScript RUNAT=Server>
+Sub Session_OnStart
+    Session.Timeout =480
+    'Application.Lock 
+    Application("NoMember_ID")=Application("NoMember_ID")+1
+    'Session("LoginID")=CStr(Application("NoMember_ID") mod 499)
+    if Application("OutSideInSide")=0 then 
+		Session("LoginID")=CStr(Application("NoMember_ID") mod 499)
+    else
+		Session("LoginID")=CStr(Application("NoMember_ID") mod 499)+500
+    end if       
+    
+    session("LoginOK")=false
+    session("newyear")=false
+    
+    session("IsOutAddrPass")=false
+    
+    application.Lock
+    application("ActiveUsers")=application("ActiveUsers")+1
+    application.UnLock 
+    
+    
+    Set objConn = Server.CreateObject("ADODB.Connection")
+    objConn.Open Application("OledbStr")
+    Set objRst=server.CreateObject ("ADODB.Recordset")
+    objRst.LockType=3
+    objRst.CursorType=3
+    set objRst.activeConnection=objConn
+    'objrst.Source="update Apponlines set online=" + trim(cint(application("ActiveUsers"))) + " where server='42'"
+    'objrst.Open
+    
+      
+End Sub
+
+Sub Session_OnEnd
+
+    application.Lock
+    application("ActiveUsers")=application("ActiveUsers")-1
+    application.UnLock 
+    
+    Set objConn = Server.CreateObject("ADODB.Connection")
+    objConn.Open Application("OledbStr")
+    Set objRst=server.CreateObject ("ADODB.Recordset")
+    objRst.LockType=3
+    objRst.CursorType=3
+    set objRst.activeConnection=objConn
+    'objrst.Source="update Apponlines set online=" + trim(cint(application("ActiveUsers"))) + " where server='42'"
+    'objrst.Open
+
+	Response.Redirect "/face/index.asp"
+End Sub
+</SCRIPT>
