@@ -1,0 +1,3 @@
+<%
+Const DbClass = 8
+%>

@@ -1,0 +1,12 @@
+行 123: 控件 DataGrid1 的类 MSDataGridLib.DataGrid 不是一个已加载的控件类。
+行 129: 属性名 _ExtentX 在 DataGrid1 中是无效的。
+行 130: 属性名 _ExtentY 在 DataGrid1 中是无效的。
+行 131: 属性名 _Version 在 DataGrid1 中是无效的。
+行 132: 属性名 HeadLines 在 DataGrid1 中是无效的。
+行 133: 属性名 RowHeight 在 DataGrid1 中是无效的。
+行 142: 属性名 HeadFont 在 DataGrid1 中是无效的。
+行 152: 属性名 ColumnCount 在 DataGrid1 中是无效的。
+行 165: 属性名 Column00 在 DataGrid1 中是无效的。
+行 178: 属性名 Column01 在 DataGrid1 中是无效的。
+行 179: 属性名 SplitCount 在 DataGrid1 中是无效的。
+行 185: 属性名 Split0 在 DataGrid1 中是无效的。

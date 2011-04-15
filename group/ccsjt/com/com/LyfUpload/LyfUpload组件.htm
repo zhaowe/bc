@@ -1,0 +1,311 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0051)http://jsp2003.nease.net/21jsp/cn/com/lyfupload.htm -->
+<HTML><HEAD><TITLE>LyfUpload组件</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=#c4e0fd>
+<TABLE width="100%" bgColor=#cbfcf4 border=0>
+  <TBODY>
+  <TR>
+    <TD width="50%"><FONT face="Comic Sans MS" 
+      color=#ff80c0><STRONG>LyfUpload</STRONG></FONT>组件1.2-<STRONG>使用手册</STRONG> 
+      2000.4.24</TD>
+    <TD width="50%">作者:<FONT color=#0000ff><A 
+      href="mailto:coolknight@263.net">刘玉锋</A></FONT></TD></TR>
+  <TR>
+    <TD width="50%">文件上传组件。。。</TD>
+    <TD width="50%"><FONT color=#000000>主页:</FONT><FONT color=#0000ff><A 
+      href="http://vbfans.yeah.net/">VB爱好者(http://vbfans.yeah.net)</A><BR><A 
+      href="http://aspfans.yeah.net/">ASP爱好者(http://aspfans.yeah.net)</A></FONT></TD></TR></TBODY></TABLE>
+<TABLE width="100%" bgColor=#fddbc4 border=0>
+  <TBODY>
+  <TR>
+    <TD width="44%"><FONT color=#ff0000><STRONG>简介：</STRONG></FONT>
+      <P>&nbsp;&nbsp;<FONT size=3><EM><STRONG>&nbsp; LyfUpload</STRONG> 
+      </EM>是一个<STRONG><EM>免费</EM></STRONG> 的ASP组件，遵从 <A 
+      href="http://localhost/uploadnew/RFC1867.txt">RFC-1867</A> HTTP 请求， 
+      它可以在ASP页面中接收客户端浏览器使用<CODE>encType= "multipart/form-data"</CODE> 
+      的Form上载的文件。</FONT></P>
+      <P><FONT size=3>&nbsp; 
+      本版本支持单文件上载、多文件上载、限制文件大小上载、限制某一类型文件上载、文件上载到数据库、数据库中读取文件及文件上载重命名等功能。</FONT></P>
+      <P><A href="http://jsp2003.nease.net/21jsp/cn/com/lyfupload12b.zip"><FONT 
+      size=3>点击此处下载组件</FONT></A></P>
+      <P><FONT color=#ff0000><STRONG>功能：</STRONG></FONT>
+      <UL>
+        <LI>支持单文件上传 <FONT color=#ff0000>(1.2版支持上载文件覆盖判断功能)</FONT> 
+        <LI>支持上传多个文件 
+        <LI>可以将上传的文件改名保存<FONT color=#ff0000>(1.2版支持变量保存功能)</FONT> 
+        <LI>可以同时使用其它的form元素的信息 
+        <LI>支持限制文件上传的大小 
+        <LI>支持限制文件上传的类型 <FONT color=#ff0000>(1.1版修改，支持多文件类型)(1.2版修正)</FONT> 
+        <LI>可以得到上传文件的大小 <FONT color=#ff0000>(1.1版新增功能) </FONT>
+        <LI>支持将文件内容保存进数据库，如上载图形文件、DOC文件等各类Windows文件 <FONT 
+        color=#ff0000>(1.1版新增功能)</FONT> 
+        <LI>支持从数据库中读取上载文件到数据库中的记录,如显示图形文件、DOC文件等各类Windows文件 <FONT 
+        color=#ff0000>(1.1版新增功能)</FONT> 
+        <LI>可以得到上传文件的MIME类型，如gif文件为images/gif<FONT color=#ff0000>(1.2版修正)</FONT> 
+
+        <LI>本版本完全免费，没有任何限制 </LI></UL>
+      <P><STRONG><FONT color=#ff0000>运行环境：</FONT></STRONG></P>
+      <BLOCKQUOTE><B><FONT color=#000000>
+        <P>Windows 2000 and IIS 5.0,&nbsp; or</FONT></B> <BR><B><FONT 
+        color=#000000>Windows NT 4.0 and IIS 3.0/IIS 4.0, or</FONT></B> 
+        <BR><B><FONT color=#000000>Windows 95/98 and Personal Web Server with 
+        ASP support.</FONT></B></P></BLOCKQUOTE>
+      <P><STRONG><FONT color=#ff0000>主要文件：</FONT></STRONG></P>
+      <P>lyfupload.dll&nbsp;&nbsp; 文件上传组件</P>
+      <P>readme.txt&nbsp;&nbsp;&nbsp;&nbsp; 使用说明(txt版本)</P>
+      <P>RFC1867.txt 文件上传标准</P>
+      <P>default.htm&nbsp;&nbsp;&nbsp; 演示用起始页面</P>
+      <P>help.htm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 使用说明(html版本)</P>
+      <P>demo1-demo6.htm(asp) 演示文件</P>
+      <P><STRONG><FONT color=#ff0000>使用方法：</FONT></STRONG></P>
+      <P><STRONG>一、注册组件</STRONG></P>
+      <P>使用 regsvr32 lyfupload.dll 命令注册！</P>
+      <P><STRONG>二、组件方法介绍：</STRONG></P>
+      <P><FONT color=#0000ff><STRONG>Request方法</STRONG></FONT></P>
+      <P><FONT color=#000000>得到上一个页面中表单元素的值；</FONT></P>
+      <P>声明：</P>
+      <P>Public Function Request(nm As String)</P>
+      <P>返回值：</P>
+      <P>为元素的值，字符串类型；</P>
+      <P><FONT color=#0000ff><STRONG>FileType方法</STRONG></FONT></P>
+      <P><FONT color=#000000>得到上传文件的Content-Type</FONT></P>
+      <P>声明：</P>
+      <P>Public Function FileType(strTag As String) </P>
+      <P>参数介绍：</P>
+      <P>strTag为Form中文件元素的名字，如"File1"：</P>
+      <P>返回值：</P>
+      <P>文件上传成功，返回文件的Content-Type</P>
+      <P>不成功，返回为""</P>
+      <P><STRONG><FONT color=#0000ff>SaveFile方法</FONT><FONT 
+      color=#ff0000>(1.2版更改)</FONT></STRONG></P>
+      <P><FONT color=#000000>上传客户端选择的文件</FONT></P>
+      <P>声明：</P>
+      <P>SaveFile(strTag As String, strPath As String,strway as boolean, 
+      Optional DestFileName As String) As String</P>
+      <P>参数介绍：</P>
+      <P>strTag为Form中文件元素的名字，如"File1"：</P>
+      <P>strPath为要文件保存在本机的目录；</P>
+      <P>strway为上传文件方式，覆盖方式上传为true，不覆盖上传为false;</P>
+      <P>DestFileName(可选参数)，代表文件上传后重命名保存的名字；</P>
+      <P>返回值：</P>
+      <P>成功，返回上载的文件的名字；</P>
+      <P>不成功，如果上传失败，返回为""；</P>
+      <P>不成功，如果上传文件后缀不对，返回为"0"(当设置了extName属性时有效)；</P>
+      <P>不成功，如果上传文件的大小太大，返回为"1"(当设置了MaxSize属性时有效)；</P>
+      <P>不成功，如果上传文件同服务器上已有文件相同，返回为"2"(当设置了参数strway为false时有效)；</P>
+      <P><STRONG><FONT color=#0000ff>SaveFileToDb方法 (</FONT><FONT 
+      color=#ff0000>1.1版新功能</FONT><FONT color=#0000ff>)</FONT></STRONG></P>
+      <P><FONT 
+      color=#000000>上传各类文件到数据库中(同<STRONG>savefile</STRONG>方法不同的是直接保存文件到数据库中而不保存为盘文件)</FONT></P>
+      <P>声明：</P>
+      <P>SaveFile(strTag As String) As String</P>
+      <P>参数介绍：</P>
+      <P>strTag为Form中文件元素的名字，如"File1"；</P>
+      <P>返回值：</P>
+      <P>成功，返回上载的文件的名字；</P>
+      <P>不成功，如果上传失败，返回为""；</P>
+      <P>不成功，如果上传文件后缀不对，返回为"0"(当设置了extName属性时有效)；</P>
+      <P>不成功，如果上传文件的大小太大，返回为"1"(当设置了MaxSize属性时有效)；</P>
+      <P><FONT color=#0000ff><STRONG>About方法</STRONG></FONT></P>
+      <P>显示LyfUpload组件的作者及版本号等信息</P>
+      <P>调用：</P>
+      <P>&lt;%<BR>dim ss</P>
+      <P>Set ss = Server.CreateObject("LyfUpload.UploadFile") '<FONT 
+      color=#ff00ff>创建LyfUpload组件对象</FONT></P>
+      <P>ss.about<BR><BR>%&gt;</P>
+      <P><STRONG>三、组件属性介绍</STRONG></P>
+      <P><FONT color=#0000ff><STRONG>ExtName属性</STRONG></FONT></P>
+      <P>限制上载文件的类型；</P>
+      <P>调用：</P>
+      <P>Set obj = Server.CreateObject("LyfUpload.UploadFile")</P>
+      <P>obj.extname="gif"&nbsp; <FONT color=#ff00ff>'设置文件上传只能是gif文件</FONT></P>
+      <P>obj.extname="gif,jpg,bmp" &nbsp;<FONT 
+      color=#ff00ff>'多文件类型请用","隔开</FONT></P>
+      <P><FONT color=#0000ff><STRONG>MaxSize属性</STRONG></FONT></P>
+      <P>限制上载文件的大小；</P>
+      <P>调用：</P>
+      <P>Set obj = Server.CreateObject("LyfUpload.UploadFile")</P>
+      <P>obj.maxsize=2048 <FONT color=#ff00ff>'设置文件上传的最大为2048个字节(2K)</FONT></P>
+      <P><STRONG><FONT color=#0000ff>FileSize属性(</FONT><FONT 
+      color=#ff0000>1.1版新功能</FONT><FONT color=#0000ff>)</FONT></STRONG></P>
+      <P>得到上载文件的大小；</P>
+      <P>调用：</P>
+      <P>Set obj = Server.CreateObject("LyfUpload.UploadFile")</P>
+      <P>response.write obj.filesize </P>
+      <P><STRONG><FONT color=#0000ff>DBContent属性(</FONT><FONT 
+      color=#ff0000>1.1版新功能</FONT><FONT color=#0000ff>)</FONT></STRONG></P>
+      <P>得到上载文件的实际内容，为二进制流(不能直接读取，主要用于上载文件到数据库中)；</P>
+      <P>调用：</P>
+      <P>Set obj = Server.CreateObject("LyfUpload.UploadFile")</P>
+      <P>ss=obj.SaveFiletodb("file1") <FONT color=#ff00ff>'保存文件到服务器</FONT></P>
+      <P>aa=obj.filetype("file1") '得到文件的Content-Type</P>
+      <P><FONT color=#ff00ff>'----文件上载到数据库中---------</FONT></P>
+      <P>rs.AddNew</P>
+      <P>rs("name")=trim(aa)</P>
+      <P>rs("pic").AppendChunk obj.DBContent<FONT 
+      color=#ff00ff>'BLOB数据不能直接赋值</FONT></P>
+      <P>rs.Update </P>
+      <P>rs.movelast </P>
+      <P><STRONG>四、具体调用实例</STRONG></P>
+      <P><STRONG>普通上载：</STRONG></P>
+      <P>1、调用显示的htm或者asp文件中加入以下代码： </P>
+      <P>&lt;form method="POST" enctype="<FONT 
+      color=#ff80c0><STRONG>multipart/form-data</STRONG></FONT>" 
+      action="demo1.asp"&gt;</P>
+      <P>&lt;p&gt;文本框1： &lt;input type="text" name="text1" 
+      size="20"&gt;&lt;br&gt;</P>
+      <P>选择文件：&lt;input type="file" name="file1"&gt;&lt;br&gt;</P>
+      <P>&lt;input type="submit" value="上载"</P>
+      <P>style="background-color: rgb(0,0,255); color: rgb(255,255,0)"&gt; 
+      &lt;/p&gt;</P>
+      <P>&lt;/form&gt;</P>
+      <P><FONT color=#ff0000><STRONG>注意：</STRONG></FONT>Form中一定要包含enctype="<FONT 
+      color=#ff80c0><STRONG>multipart/form-data</STRONG></FONT>"语句</P>
+      <P>2、后台处理程序中加入下面代码：</P>
+      <P>&lt;%@Language=VBScript %&gt;</P>
+      <P>&lt;HTML&gt; </P>
+      <P>&lt;BODY&gt; </P>
+      <P>&lt;%</P>
+      <P>Set obj = Server.CreateObject("LyfUpload.UploadFile")</P>
+      <P>txt = obj.request("text1") '得到form元素的值</P>
+      <P>Response.Write( "文本框1的输入值是： " &amp; txt) </P>
+      <P>Response.Write "&lt;br&gt;"</P>
+      <P>ss=obj.SaveFile("file1", <A href="file:///C:/temp">"C:\temp"</A>,true) 
+      <FONT color=#ff00ff>'保存文件到服务器</FONT></P>
+      <P>aa=obj.filetype("file1")</P>
+      <P>if ss&lt;&gt; "" then</P>
+      <P>Response.Write "选择的文件已经上载到服务器！&lt;br&gt;" </P>
+      <P>Response.Write("文件名：" &amp; ss) </P>
+      <P>Response.Write("&lt;br&gt;Content-Type：" &amp; aa) <FONT 
+      color=#ff00ff>'得到Content-Type</FONT></P>
+      <P>end if</P>
+      <P>obj.about '关于LyfUploa1.2</P>
+      <P>%&gt;</P>
+      <P>&lt;/BODY &gt;</P>
+      <P>&lt;/html&gt;</P>
+      <P><STRONG>文件上载到数据库(<FONT 
+      color=#ff00ff>此处仅加入gif图形上载到数据库中及从数据库中读取的功能，其它请看DEMO文件</FONT>)</STRONG></P>
+      <P>1、调用显示的htm或者asp文件中加入以下代码： </P>
+      <P>&lt;form method="POST" enctype="<FONT 
+      color=#ff80c0><STRONG>multipart/form-data</STRONG></FONT>" 
+      action="demo4.asp"&gt;</P>
+      <P>&lt;p&gt;文本框1： &lt;input type="text" name="text1" 
+      size="20"&gt;&lt;br&gt;</P>
+      <P>选择文件：&lt;input type="file" name="file1"&gt;&lt;br&gt;</P>
+      <P>&lt;input type="submit" value="上载"</P>
+      <P>style="background-color: rgb(0,0,255); color: rgb(255,255,0)"&gt; 
+      &lt;/p&gt;</P>
+      <P>&lt;/form&gt;</P>
+      <P><FONT color=#ff0000><STRONG>注意：</STRONG></FONT>Form中一定要包含enctype="<FONT 
+      color=#ff80c0><STRONG>multipart/form-data</STRONG></FONT>"语句</P>
+      <P>2、后台处理程序中加入下面代码：</P>
+      <P>&lt;%@Language=VBScript %&gt;</P>
+      <P>&lt;%</P>
+      <P><FONT color=#ff00ff>'设置数据库链接</FONT></P>
+      <P>strConn = "Driver={Microsoft Access Driver (*.mdb)};DBQ=" &amp; 
+      Server.MapPath("new.mdb") </P>
+      <P>session("strconn")=strConn</P>
+      <P>Set dbc = Server.CreateObject("ADODB.Connection")</P>
+      <P>dbc.open strConn</P>
+      <P>set rs=server.CreateObject("adodb.recordset")</P>
+      <P>rs.Open "SELECT * FROM product",dbc,1,3</P>
+      <P>%&gt;</P>
+      <P>&lt;HTML&gt; </P>
+      <P>&lt;BODY&gt; </P>
+      <P>&lt;%</P>
+      <P>Set obj = Server.CreateObject("LyfUpload.UploadFile")</P>
+      <P>obj.extname="gif"</P>
+      <P>txt = obj.request("text1") <FONT color=#ff00ff>'得到form元素的值</FONT></P>
+      <P>Response.Write( "文本框1的输入值是： " &amp; txt) </P>
+      <P>Response.Write "&lt;br&gt;"</P>
+      <P>ss=obj.SaveFiletodb("file1") <FONT color=#ff00ff>'保存文件到服务器</FONT></P>
+      <P>aa=obj.filetype("file1") <FONT 
+      color=#ff00ff>'得到文件的Content-Type</FONT><BR><BR>if ss= "" then</P>
+      <P>Response.Write ("文件上传失败!")</P>
+      <P>elseif ss= "0" then</P>
+      <P>Response.Write ("文件尺寸过大!")</P>
+      <P>elseif ss= "1" then</P>
+      <P>Response.Write ("文件不是gif文件!")</P>
+      <P>else</P>
+      <P><FONT color=#ff00ff>'----文件上载到数据库中---------</FONT></P>
+      <P>rs.AddNew</P>
+      <P>rs("name")=trim(aa)</P>
+      <P>rs("pic").AppendChunk obj.DBContent<FONT 
+      color=#ff00ff>'BLOB数据不能直接赋值</FONT></P>
+      <P>rs.Update </P>
+      <P>rs.movelast</P>
+      <P>session("ID")=rs("ID")</P>
+      <P>rs.Close </P>
+      <P>dbc.Close </P>
+      <P>set rs=nothing</P>
+      <P>set dbc=nothing </P>
+      <P><FONT color=#ff00ff>'------------------------------上载到数据库中结束</FONT></P>
+      <P>Response.Write "选择的文件已经上载到服务器！&lt;br&gt;" </P>
+      <P>Response.Write("文件名：" &amp; ss) </P>
+      <P>Response.Write("&lt;br&gt;Content-Type：" &amp; aa) <FONT 
+      color=#ff00ff>'得到Content-Type</FONT></P>
+      <P>end if<BR><BR>obj.about <FONT color=#ff00ff>'关于LyfUploa1.1</FONT></P>
+      <P>%&gt;</P>
+      <P>&lt;br&gt;</P>
+      <P>&lt;a 
+      href="pictest.asp?ID=&lt;%=session("ID")%&gt;"&gt;点击此处查看上传后数据库中的GIF文件!&lt;/a&gt;</P>
+      <P>&lt;/BODY &gt;</P>
+      <P>&lt;/html&gt;</P>
+      <P>3、从数据库中显示图形的asp页面(<FONT color=#ff00ff>pictest.asp</FONT>)</P>
+      <P>&lt;%</P>
+      <P>Function SetForDisplay(field, contentType) <FONT 
+      color=#ff00ff>'设置文件的大小及MIME类型</FONT><BR><BR>contentType = 
+      LCase(trim(contentType))</P>
+      <P>nFieldSize = field.ActualSize</P>
+      <P>bytes = field.GetChunk(nFieldSize)<BR><BR>Session("Bytes") = bytes</P>
+      <P>Session("Type") = contentType</P>
+      <P>End Function</P>
+      <P>%&gt;<BR><BR>&lt;%</P>
+      <P>sql = "select * from product where id=" &amp; request("ID")</P>
+      <P>Set oRS = Server.CreateObject("ADODB.Recordset")</P>
+      <P>oRS.CursorLocation = 3</P>
+      <P>strConn = "Driver={Microsoft Access Driver (*.mdb)};DBQ=" &amp; 
+      Server.MapPath("new.mdb") </P>
+      <P>oRS.Open sql, strConn</P>
+      <P>SetForDisplay oRS("pic"), "image/gif" <FONT color=#ff00ff>'"image/gif" 
+      为MIME类型</FONT></P>
+      <P><FONT color=#ff00ff>'附：常见的MIME类型</FONT></P>
+      <P><FONT color=#ff00ff>'GIF文件&nbsp; "image/gif"</FONT></P>
+      <P><FONT color=#ff00ff>'BMP文件 "image/bmp"</FONT></P>
+      <P><FONT color=#ff00ff>'JPG文件 "image/jpeg"</FONT></P>
+      <P><FONT color=#ff00ff>'zip文件 "application/x-zip-compressed"</FONT></P>
+      <P><FONT color=#ff00ff>'DOC文件 "application/msword"</FONT></P>
+      <P><FONT color=#ff00ff>'文本文件 "text/plain"</FONT></P>
+      <P><FONT color=#ff00ff>'HTML文件 "text/html"</FONT></P>
+      <P><FONT color=#ff00ff>'一般文件 "application/octet-stream"</FONT></P>
+      <P>Set oRS.ActiveConnection = Nothing</P>
+      <P>%&gt;</P>
+      <P>&lt;javascript src="theImg.asp"&gt; <FONT 
+      color=#ff00ff>'调用处理页面</FONT></P>
+      <P>&lt;%response.write(Session("Type"))%&gt;</P>
+      <P>4、最后处理页面(<FONT color=#ff00ff>theImg.asp</FONT>)</P>
+      <P>&lt;% </P>
+      <P>response.Expires = 0</P>
+      <P>response.Buffer = True</P>
+      <P>response.Clear</P>
+      <P>response.contentType = Session("Type")</P>
+      <P>response.BinaryWrite Session("Bytes")</P>
+      <P>Session("Type") = ""</P>
+      <P>Session("Bytes") = ""</P>
+      <P>response.End</P>
+      <P>%&gt;</P>
+      <P>注意：<FONT 
+      color=#ff0000><STRONG>要得到上一个页面中的元素值，请使用LyfUpload组件的Request方法，使用Request.form会使得程序不能正常运行</STRONG></FONT></P>
+      <P>其它功能的实例请看其它的演示程序的代码!!!!</P>
+      <P><FONT color=#ff0000><STRONG>如果在使用中发现任何问题或者好的建议<A 
+      href="mailto:coolknight@263.net">请同我联系</A>！！！</STRONG></FONT></P>
+      <P><FONT color=#ff0000><STRONG>我的Email地址为:<A 
+      href="mailto:coolknight@263.net">coolknight@263.net</A></STRONG></FONT></P>
+      <P>　</P></TD></TR></TBODY></TABLE>
+<P>　</P>
+<P>　</P>
+<P>　</P></BODY></HTML>
